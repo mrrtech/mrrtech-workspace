@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@mrrtech-workspace/backend/courses": [
+        "libs/backend/courses/src/index.ts"
+      ],
+      "@mrrtech-workspace/backend": ["libs/backend/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { BackendModule } from '@mrrtech-workspace/backend';
 
 @Module({
-  imports: [],
+  imports: [BackendModule],
   controllers: [AppController],
   providers: [AppService],
 })
