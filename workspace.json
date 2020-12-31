@@ -1,8 +1,209 @@
 {
   "version": 2,
-
-  "projects": {},
+  "projects": {
+    "frontend-ng-space": {
+      "projectType": "application",
+      "root": "apps/frontend-ng-space",
+      "sourceRoot": "apps/frontend-ng-space/src",
+      "prefix": "mrrtech-workspace",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend-ng-space",
+            "index": "apps/frontend-ng-space/src/index.html",
+            "main": "apps/frontend-ng-space/src/main.ts",
+            "polyfills": "apps/frontend-ng-space/src/polyfills.ts",
+            "tsConfig": "apps/frontend-ng-space/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/frontend-ng-space/src/favicon.ico",
+              "apps/frontend-ng-space/src/assets"
+            ],
+            "styles": [
+              "apps/frontend-ng-space/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend-ng-space/src/environments/environment.ts",
+                  "with": "apps/frontend-ng-space/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-ng-space:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-ng-space:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-ng-space:build"
+          }
+        },
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/frontend-ng-space/tsconfig.app.json",
+              "apps/frontend-ng-space/tsconfig.spec.json",
+              "apps/frontend-ng-space/tsconfig.editor.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/frontend-ng-space/**/*"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/frontend-ng-space"
+          ],
+          "options": {
+            "jestConfig": "apps/frontend-ng-space/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-ng-space-e2e": {
+      "root": "apps/frontend-ng-space-e2e",
+      "sourceRoot": "apps/frontend-ng-space-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/frontend-ng-space-e2e/cypress.json",
+            "tsConfig": "apps/frontend-ng-space-e2e/tsconfig.e2e.json",
+            "devServerTarget": "frontend-ng-space:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "frontend-ng-space:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/frontend-ng-space-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/frontend-ng-space-e2e/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "backend-nest-space": {
+      "root": "apps/backend-nest-space",
+      "sourceRoot": "apps/backend-nest-space/src",
+      "projectType": "application",
+      "prefix": "backend-nest-space",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/backend-nest-space",
+            "main": "apps/backend-nest-space/src/main.ts",
+            "tsConfig": "apps/backend-nest-space/tsconfig.app.json",
+            "assets": [
+              "apps/backend-nest-space/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/backend-nest-space/src/environments/environment.ts",
+                  "with": "apps/backend-nest-space/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "backend-nest-space:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/backend-nest-space/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/backend-nest-space"
+          ],
+          "options": {
+            "jestConfig": "apps/backend-nest-space/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "frontend-ng-space"
 }
