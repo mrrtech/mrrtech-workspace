@@ -21,21 +21,22 @@ export class CoursesService {
     return this.courses.find((item) => item.id === +id);
   }
 
-  create(createCoffeeDto: any) {
-    this.courses.push(createCoffeeDto);
+  create(createCourseDto: any) {
+    this.courses.push(createCourseDto);
   }
 
-  update(id: string, updateCoffeeDto: any) {
-    const existingCoffee = this.findOne(id);
-    if (existingCoffee) {
+  update(id: string, updateCourseDto: any) {
+    const existingCourse = this.findOne(id);
+    if (existingCourse) {
       // update the existing entity
+      console.log();
     }
   }
 
   remove(id: string) {
-    const coffeeIndex = this.courses.findIndex((item) => item.id === +id);
-    if (coffeeIndex >= 0) {
-      this.courses.splice(coffeeIndex, 1);
+    const courseIndex = this.courses.findIndex((item) => item.id === +id);
+    if (courseIndex >= 0) {
+      this.courses.splice(courseIndex, 1);
     }
   }
 }
