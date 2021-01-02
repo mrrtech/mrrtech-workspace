@@ -16,10 +16,15 @@ import { UpdateCourseDto } from '../../dto/update-course.dto/update-course.dto';
 import { CoursesService } from '../../services/courses/courses.service';
 import { Public } from './../../decorators/public.decorator';
 import { ParseIntPipe } from '../../pipes/parse-int/parse-int.pipe';
+import { ApiForbiddenResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
+
+@ApiTags('Courses')
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
 
+  // @ApiResponse({ status: 403, description: 'Forbidden.' })
+  // @ApiForbiddenResponse({ description: 'Forbidden.' })
   @Public()
   @Get()
   findAll(@Query() paginationQueryDto: PaginationQueryDto) {

@@ -30,8 +30,6 @@ async function bootstrap() {
       },
     })
   );
-  // app.useGlobalFilters(new HttpExceptionFilter());
-
   app.useGlobalInterceptors(
     new WrapResponseInterceptor(),
     new TimeoutInterceptor()
@@ -39,13 +37,13 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3333;
 
-  // const options = new DocumentBuilder()
-  //   .setTitle('backend-nest-space')
-  //   .setDescription('Course application')
-  //   .setVersion('1.0')
-  //   .build();
-  // const document = SwaggerModule.createDocument(app, options);
-  // SwaggerModule.setup('api', app, document);
+  const options = new DocumentBuilder()
+    .setTitle('backend-nest-space')
+    .setDescription('Course application')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(port, () => {
     Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);

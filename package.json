@@ -9,6 +9,8 @@
     "backend-build": "npm run initial-build && nx build backend-nest-space",
     "frontend-start": "nx build frontend-ng-space && nx run frontend-ng-space:serve",
     "backend-start": "nx build backend-nest-space && nx run backend-nest-space:serve",
+    "frontend-start-test": "nx test frontend-ng-space",
+    "backend-start-test":"nx test backend-nest-space",
     "frontend-start-skipinstall": "nx run frontend-ng-space:serve",
     "backend-start-skipinstall": "nx run backend-nest-space:serve",
     "nx": "nx",
