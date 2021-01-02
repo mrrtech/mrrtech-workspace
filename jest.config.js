@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/apps/backend-nest-space',
     '<rootDir>/libs/backend/courses',
     '<rootDir>/libs/backend',
+    '<rootDir>/libs/backend-course-rating',
   ],
 };

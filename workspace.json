@@ -214,6 +214,31 @@
           }
         }
       }
+    },
+    "backend-course-rating": {
+      "root": "libs/backend-course-rating",
+      "sourceRoot": "libs/backend-course-rating/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/backend-course-rating/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/backend-course-rating"
+          ],
+          "options": {
+            "jestConfig": "libs/backend-course-rating/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

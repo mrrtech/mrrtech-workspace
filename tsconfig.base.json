@@ -18,7 +18,10 @@
       "@mrrtech-workspace/backend/courses": [
         "libs/backend/courses/src/index.ts"
       ],
-      "@mrrtech-workspace/backend": ["libs/backend/src/index.ts"]
+      "@mrrtech-workspace/backend": ["libs/backend/src/index.ts"],
+      "@mrrtech-workspace/backend-course-rating": [
+        "libs/backend-course-rating/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

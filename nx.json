@@ -38,6 +38,9 @@
     },
     "backend": {
       "tags": []
+    },
+    "backend-course-rating": {
+      "tags": []
     }
   }
 }

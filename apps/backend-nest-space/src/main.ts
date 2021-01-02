@@ -8,23 +8,34 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { HttpExceptionFilter } from './http-exception/http-exception.filter';
+import { WrapResponseInterceptor } from './interceptor/wrap-response/wrap-response.interceptor';
+import { TimeoutInterceptor } from './interceptor/timeout/timeout.interceptor';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
+  app.useGlobalFilters(new HttpExceptionFilter());
+  // Apply ApiKeyGuard globally
+  //app.useGlobalGuards(new ApiKeyGuard());
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
       transform: true,
       forbidNonWhitelisted: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     })
   );
   // app.useGlobalFilters(new HttpExceptionFilter());
-  // app.useGlobalInterceptors(
-  //   new WrapResponseInterceptor(),
-  //   new TimeoutInterceptor()
-  // );
+
+  app.useGlobalInterceptors(
+    new WrapResponseInterceptor(),
+    new TimeoutInterceptor()
+  );
 
   const port = process.env.PORT || 3333;
 
