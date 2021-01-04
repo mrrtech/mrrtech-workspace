@@ -18,7 +18,12 @@
             "aot": true,
             "assets": [
               "apps/frontend-ng-space/src/favicon.ico",
-              "apps/frontend-ng-space/src/assets"
+              "apps/frontend-ng-space/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "apps/frontend-ng-space/src/styles.scss"
@@ -235,6 +240,68 @@
           ],
           "options": {
             "jestConfig": "libs/backend-course-rating/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend": {
+      "projectType": "library",
+      "root": "libs/frontend",
+      "sourceRoot": "libs/frontend/src",
+      "prefix": "mrrtech-workspace",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/tsconfig.lib.json",
+              "libs/frontend/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/frontend/**/*"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/frontend"
+          ],
+          "options": {
+            "jestConfig": "libs/frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-nz-zorro": {
+      "projectType": "library",
+      "root": "libs/shared/nz-zorro",
+      "sourceRoot": "libs/shared/nz-zorro/src",
+      "prefix": "mrrtech-workspace",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/nz-zorro/tsconfig.lib.json",
+              "libs/shared/nz-zorro/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/nz-zorro/**/*"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/shared/nz-zorro"
+          ],
+          "options": {
+            "jestConfig": "libs/shared/nz-zorro/jest.config.js",
             "passWithNoTests": true
           }
         }

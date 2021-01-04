@@ -5,5 +5,7 @@ module.exports = {
     '<rootDir>/libs/backend/courses',
     '<rootDir>/libs/backend',
     '<rootDir>/libs/backend-course-rating',
+    '<rootDir>/libs/frontend',
+    '<rootDir>/libs/shared/nz-zorro',
   ],
 };
