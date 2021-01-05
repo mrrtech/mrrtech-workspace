@@ -11,45 +11,52 @@ import { catchError, tap, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CoursesService {
-  private courseUrl = 'api/courses';
-  //private courses: Course[];
+  private courseUrl = 'http://localhost:3333/api/courses';
+  private courses: Course[];
+
   constructor(private http: HttpClient) {}
 
-  getCourses(): Course[] {
-    return [
-      {
-        id: 1,
-        courseName: 'test',
-        courseType: 'test',
-        author: 'test',
-        comments: 'test',
-        students: ['test'],
-      },
-      {
-        id: 2,
-        courseName: 'test',
-        courseType: 'test',
-        author: 'test',
-        comments: 'test',
-        students: ['test'],
-      },
-      {
-        id: 3,
-        courseName: 'test',
-        courseType: 'test',
-        author: 'test',
-        comments: 'test',
-        students: ['test'],
-      },
-    ];
-  }
-
-  // getCourses(): Observable<Course[]> {
-  //   return this.http.get<Course[]>(this.courseUrl).pipe(
-  //     tap((data) => console.log(JSON.stringify(this.courses))),
-  //     catchError(this.handleError)
-  //   );
+  // getCourses(): Course[] {
+  //   return [
+  //     {
+  //       id: 1,
+  //       courseName: 'test',
+  //       courseType: 'test',
+  //       author: 'test',
+  //       comments: 'test',
+  //       students: ['test'],
+  //     },
+  //     {
+  //       id: 2,
+  //       courseName: 'test',
+  //       courseType: 'test',
+  //       author: 'test',
+  //       comments: 'test',
+  //       students: ['test'],
+  //     },
+  //     {
+  //       id: 3,
+  //       courseName: 'test',
+  //       courseType: 'test',
+  //       author: 'test',
+  //       comments: 'test',
+  //       students: ['test'],
+  //     },
+  //   ];
   // }
+
+  getCourses(): Observable<Course[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }),
+    };
+    return this.http.get<Course[]>(this.courseUrl, httpOptions).pipe(
+      tap((data) => console.log(JSON.stringify(this.courses))),
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(err: any): Observable<never> {
     let errorMessage: string;
