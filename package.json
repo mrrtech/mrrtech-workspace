@@ -13,6 +13,7 @@
     "backend-start-test": "nx test backend-nest-space",
     "frontend-start-skipinstall": "nx run frontend-ng-space:serve",
     "backend-start-skipinstall": "nx run backend-nest-space:serve",
+    "frontend-start-proxy": "nx run frontend-ng-space:serve --proxy-config proxy.conf.json",
     "nx": "nx",
     "start": "nx serve",
     "build": "nx build",

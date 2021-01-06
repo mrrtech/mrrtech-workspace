@@ -15,15 +15,15 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.courseService.getCourses().subscribe({
       next: (courses) => {
-        this.courses = courses;
+        console.log(typeof courses);
         this.listOfData = courses;
-        console.log(this.courses);
+        let keys = [];
+        for (let key in courses) {
+          if (courses.hasOwnProperty(key)) keys.push(key);
+        }
+        console.log(keys);
       },
       error: (err) => (this.errorMessage = err),
     });
   }
-  //this.listOfData = this.courseService.getCourses().subscribe(data: Course[]) => {
-
-  //};
-  //}
 }

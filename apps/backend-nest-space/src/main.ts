@@ -19,7 +19,7 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   // Apply ApiKeyGuard globally
   //app.useGlobalGuards(new ApiKeyGuard());
-
+  app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
