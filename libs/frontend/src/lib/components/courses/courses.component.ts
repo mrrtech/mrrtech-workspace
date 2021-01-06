@@ -10,18 +10,13 @@ export class CoursesComponent implements OnInit {
   courses: Course[];
   errorMessage = '';
   listOfData: Course[];
+  students: any;
   constructor(private courseService: CoursesService) {}
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe({
       next: (courses) => {
-        console.log(typeof courses);
-        this.listOfData = courses;
-        let keys = [];
-        for (let key in courses) {
-          if (courses.hasOwnProperty(key)) keys.push(key);
-        }
-        console.log(keys);
+        this.listOfData = courses.data;
       },
       error: (err) => (this.errorMessage = err),
     });

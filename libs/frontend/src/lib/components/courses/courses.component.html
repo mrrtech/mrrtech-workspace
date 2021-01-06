@@ -15,7 +15,10 @@
       <td>{{ data.courseType }}</td>
       <td>{{ data.author }}</td>
       <td>{{ data.comments }}</td>
-      <td>{{ data.students }}</td>
+      <div *ngFor="let item of data.students">
+        <td>{{ item.name }}</td>
+      </div>
+
       <td>
         <nz-divider nzType="vertical"></nz-divider>
         <a>Edit</a>&nbsp;&nbsp;<a>Delete</a>

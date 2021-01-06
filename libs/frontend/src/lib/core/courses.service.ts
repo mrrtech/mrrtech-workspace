@@ -4,9 +4,11 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
+  HttpResponse,
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,12 +25,9 @@ export class CoursesService {
   constructor(private http: HttpClient) {}
 
   getCourses(): Observable<Course[]> {
-    return this.http
-      .get<Course[]>(this.courseUrl, { headers: this.httpOptions })
-      .pipe(
-        tap((data) => console.log(JSON.stringify(data))),
-        catchError(this.handleError)
-      );
+    return this.http.get<Course[]>(this.courseUrl, {
+      headers: this.httpOptions,
+    });
   }
 
   private handleError(err: any): Observable<never> {
