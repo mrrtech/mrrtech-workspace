@@ -21,6 +21,10 @@
       "@mrrtech-workspace/backend": ["libs/backend/src/index.ts"],
       "@mrrtech-workspace/backend-course-rating": [
         "libs/backend-course-rating/src/index.ts"
+      ],
+      "@mrrtech-workspace/frontend": ["libs/frontend/src/index.ts"],
+      "@mrrtech-workspace/shared/nz-zorro": [
+        "libs/shared/nz-zorro/src/index.ts"
       ]
     }
   },

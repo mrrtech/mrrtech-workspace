@@ -41,6 +41,12 @@
     },
     "backend-course-rating": {
       "tags": []
+    },
+    "frontend": {
+      "tags": []
+    },
+    "shared-nz-zorro": {
+      "tags": []
     }
   }
 }

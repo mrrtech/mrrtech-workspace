@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { menu } from './menu.config';
 @Component({
   selector: 'mrrtech-workspace-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend-ng-space';
+  isCollapsed = false;
+  menu = menu;
 }

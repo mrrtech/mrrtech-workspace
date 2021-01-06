@@ -2,7 +2,7 @@
 
 This project was generated using [Nx](https://nx.dev).
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<!-- <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p> -->
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
@@ -88,3 +88,13 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+# Project Info
+
+This workspace contains NestJS as backend and Angular frontend. Please follow below steps to execute the project.
+
+1. Install Docker on your Desktop/Laptop
+2. goto docker file location on the backend project and run - docker-compose up -d (This will create postgres image up and running)
+3. connect with postgres in local and create db and table -
+4. npm run backend-start
+5. open another terminal and run - npm run frontend-start-proxy
